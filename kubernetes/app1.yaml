@@ -13,12 +13,13 @@ spec:
         app: my-app
     spec:
       containers:
-        - name: my-container
-          image: us-central1-docker.pkg.dev/my-gcp-devops-415707/gke-repo/quickstart-image
-          ports:
-            - containerPort: 8080
+      - name: my-container
+        image: us-central1-docker.pkg.dev/my-gcp-devops-415707/gke-repo/quickstart-image
+        ports:
+        - containerPort: 8080
 
 
+---
 apiVersion: v1
 kind: Service
 metadata:
@@ -27,7 +28,7 @@ spec:
   selector:
     app: my-app
   ports:
-    - protocol: TCP
-      port: 8080
-      targetPort: 8080
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
   type: LoadBalancer
