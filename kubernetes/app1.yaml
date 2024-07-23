@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: my-deployment
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       app: my-app
@@ -17,7 +17,6 @@ spec:
         image: us-central1-docker.pkg.dev/gcp-devops-415915/gke-repo/quickstart-image
         ports:
         - containerPort: 8080
-
 
 ---
 apiVersion: v1

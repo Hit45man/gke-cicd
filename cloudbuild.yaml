@@ -4,9 +4,6 @@ steps:
   id: 'Build Docker Image'
 
 - name: 'gcr.io/cloud-builders/docker'
-  # images:
-  # - 'us-central1-docker.pkg.dev/gcp-devops-415915/gke-repo/quickstart-image'
-
   args: ['push', 'us-central1-docker.pkg.dev/gcp-devops-415915/gke-repo/quickstart-image']
   id: 'Push Docker Image'
 
@@ -15,9 +12,6 @@ steps:
   id: 'Build Docker Image2'
 
 - name: 'gcr.io/cloud-builders/docker'
-  # images:
-  # - 'us-central1-docker.pkg.dev/gcp-devops-415915/gke-repo/quickstart-image'
-
   args: ['push', 'us-central1-docker.pkg.dev/gcp-devops-415915/gke-repo/flask-image']
   id: 'Push Docker Image2'
 
@@ -32,7 +26,7 @@ steps:
     gcloud deploy apply --file deploy/dev.yaml --region=us-central1
     gcloud deploy apply --file deploy/prod.yaml --region=us-central1
     gcloud deploy releases create 'app-release-${SHORT_SHA}' --delivery-pipeline=gke-cicd-pipeline --region=us-central1 --from-k8s-manifest=./kubernetes/*
-    gcloud deploy releases create 'app-release-${SHORT_SHA}' --delivery-pipeline=gke-cicd-pipeline --region=us-central1 --from-k8s-manifest=./kubernetes/*
+
 
 options:
   logging: CLOUD_LOGGING_ONLY
